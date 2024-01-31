@@ -14,7 +14,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        
+       $movies =  Movie::all();
+       return view("admin.movies.index", compact("movies"));
     }
 
     /**
@@ -22,7 +23,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin.movies.create");
     }
 
     /**
@@ -30,7 +31,14 @@ class MovieController extends Controller
      */
     public function store(StoreMovieRequest $request)
     {
-        //
+        $validati = $request->validated();
+
+        $movie = new Movie();
+        $movie->fill($validati);
+        $movie->save();
+
+        // return redirect()->route("admin.posts.show", $newPost->id);
+        return redirect()->route("admin.posts.index");
     }
 
     /**
