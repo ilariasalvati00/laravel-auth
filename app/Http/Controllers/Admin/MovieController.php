@@ -38,7 +38,7 @@ class MovieController extends Controller
         $movie->save();
 
         // return redirect()->route("admin.posts.show", $newPost->id);
-        return redirect()->route("admin.posts.index");
+        return redirect()->route("admin.movies.index");
     }
 
     /**
